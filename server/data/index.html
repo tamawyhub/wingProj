@@ -1,0 +1,112 @@
+<!doctype html>
+<head>
+<link rel="stylesheet" href="index.css">
+<center id="pageHeader">Wing Controller Setting</center>
+</head>
+<body>
+	<div class="tab">
+		<button class="tablinks active" onclick="openTab(event, 'gauges')">Gauges</button>
+		<button class="tablinks" onclick="openTab(event, 'gainSetting')">Gain Setting</button>
+		<button class="tablinks" onclick="openTab(event, 'manualCtrl')">Gain Setting</button>
+	</div>
+	<div id="gauges" class="tabcontent" style="display:block;">
+		<div class="gauge">
+			<h3 class="gauge-head">Speed</h3>
+			<canvas id="speedVal"
+					data-type="radial-gauge"
+					data-width="160"
+					data-height="160"
+					data-border-radius="0"
+					data-borders="0"
+					data-bar-begin-circle="25"
+					data-minor-ticks="10"
+					data-value="0"
+					data-min-value="0"
+					data-max-value="140"
+					data-title="km/h"
+					data-major-ticks="0,20,40,60,80,100,120,140"
+					data-ticks-width="18"
+					data-ticks-width-minor="7.5"
+					data-bar-width="5"
+					data-highlights="false"
+					data-color-value-box-shadow="false"
+					data-value-box-stroke="0"
+					data-color-value-box-background="false"
+					data-value-int="3"
+					data-value-dec="0"
+			></canvas>
+		</div>
+		<div class="gauge">
+			<h3 class="gauge-head">Current Sensor 1</h3>
+			<canvas id="c1Val"
+					data-type="radial-gauge"
+					data-width="160"
+					data-height="160"
+					data-border-radius="0"
+					data-borders="0"
+					data-bar-begin-circle="25"
+					data-minor-ticks="10"
+					data-value="0"
+					data-min-value="0"
+					data-max-value="5"
+					data-title="Amp"
+					data-major-ticks="0,1,2,3,4,5"
+					data-ticks-width="18"
+					data-ticks-width-minor="7.5"
+					data-bar-width="5"
+					data-highlights="false"
+					data-color-value-box-shadow="false"
+					data-value-box-stroke="0"
+					data-color-value-box-background="false"
+					data-value-int="1"
+					data-value-dec="1"
+			></canvas>
+		</div>
+		<div class="gauge">
+			<h3 class="gauge-head">Current Sensor 2</h3>
+			<canvas id="c2Val"
+					data-type="radial-gauge"
+					data-width="160"
+					data-height="160"
+					data-border-radius="0"
+					data-borders="0"
+					data-bar-begin-circle="25"
+					data-minor-ticks="10"
+					data-value="0"
+					data-min-value="0"
+					data-max-value="5"
+					data-title="Amp"
+					data-major-ticks="0,1,2,3,4,5"
+					data-ticks-width="18"
+					data-ticks-width-minor="7.5"
+					data-bar-width="5"
+					data-highlights="false"
+					data-color-value-box-shadow="false"
+					data-value-box-stroke="0"
+					data-color-value-box-background="false"
+					data-value-int="1"
+					data-value-dec="1"
+			></canvas>
+		</div>
+		<br style="clear:both"/>
+	</div>
+	<div id="gainSetting" class="tabcontent">
+		<form action='action.php' id="mainForm">
+			<label id="kpLabel" for="kp">KP: </label>
+			<input id="kpField" type="number" id="kp" name="kp"><br><br>
+			<label id="kiLabel" for="ki">KI: </label>
+			<input id="kiField" type="number" id="ki" name="ki"><br><br>
+			<label id="kdLabel" for="kd">KD: </label>
+			<input id="kdField" type="number" id="kd" name="kd"><br><br>
+			<input id="submitBtn" type="submit" value="Submit">
+		</form>
+	</div>
+	<div id="manualCtrl" class="tabcontent">
+	<!-- todo: implement the backend of this section to introduce manual control -->
+		<input type="checkbox" value="Manual Control"/><br>
+		<button>+</button>
+		<button>-</button>
+	</div>
+</body>
+<script src="gauge.min.js"></script>
+<script src="index.js"></script>
