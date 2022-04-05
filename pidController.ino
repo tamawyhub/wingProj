@@ -116,7 +116,13 @@ struct VehicleData{
 }vehicleData; //the 32 byte limit also holds here
 
 void updateWingData(){
+  
+  #ifdef PA03
   wingData.pos=0;// todo: get data from quadrature counter
+  #else
+  wingData.pos=(analogRead(POS1)+analogRead(POS2))/2;
+  #endif
+  
   wingData.cs1=(analogRead(CS1)-512)/20.5;
   wingData.cs2=(analogRead(CS2)-512)/20.5;
 }
