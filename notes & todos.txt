@@ -22,3 +22,4 @@ todos:
 * the brake feedback is still got from the limit switch. use obdii for this task
 * ESP32 contains bluetooth, and coexistence between it and the built-in wifi is possible. consider transferring the OBDII function to the ESP32
 * feel free to add more gauges and styling to the web page. always update the filesystem of the ESP for your changes to take effect
+* some optimization technique would be better to reduce current consumption on both the actuators. currently syncRatio is fixed at 1.0.
