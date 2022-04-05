@@ -1,0 +1,22 @@
+AXIS #1) ESP server
+* A working version is already tested using ESP8266 (aka NodeMCU); ESP32 yet to be tested; minor adjustments in includes and class names required to migrate from Node to ESP32.
+* There is the ino sketch and the data directory. the data directory contains the resources which are to reside on the esp filesystem.
+* Resources residing in the data directory include html, css, js for the web page.
+* Resources can be accessed using the SPIFFS API.
+* A limitation of the SPIFFS API is that it limits file paths' length to 32 bytes, including the terminating \0.
+* The gauges in the web page are derived from this project: canvas-gauges.com . visit the link for documentation.
+* the esp gets readings from the wing controller through I2C from the mega. Full specification of the protocol is provided
+
+AXIS #2) INO MEGA wing controller
+* full circuit schematic attached
+* currently using simple PID
+* use quadrature decoder chip with the hall effect actuator to avoid loss of ticks. am proposing LS7166A. supply clock signal to the chip from the mega through either clock output or PWM with maximum frequency.
+* install ELMduino library for arduino; this is the library responsible for communication with ELM327 (https://github.com/PowerBroker2/ELMduino)
+* you will get conflicting declaration error between 'const char AUTOMATIC' from ELMduino and 'PID::Mode AUTOMATIC' in PID library. go solve it, e.g. change all occurrences of AUTOMATIC in ELMduino to _AUTOMATIC
+
+todos:
+* interface for reading from the LS7166A is currently not implemented due to tight time. currently it is defaulted to 0
+* implement the backend for the manual control of the wing
+* the brake feedback is still got from the limit switch. use obdii for this task
+* ESP32 contains bluetooth, and coexistence between it and the built-in wifi is possible. consider transferring the OBDII function to the ESP32
+* feel free to add more gauges and styling to the web page. always update the filesystem of the ESP for your changes to take effect
