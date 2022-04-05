@@ -1,11 +1,13 @@
 AXIS #1) ESP server
-* A working version is already tested using ESP8266 (aka NodeMCU); ESP32 yet to be tested; minor adjustments in includes and class names required to migrate from Node to ESP32.
+* A working version is already tested using ESP8266 (aka NodeMCU); ESP32 yet to be tested.
 * There is the ino sketch and the data directory. the data directory contains the resources which are to reside on the esp filesystem.
 * Resources residing in the data directory include html, css, js for the web page.
 * Resources can be accessed using the SPIFFS API.
 * A limitation of the SPIFFS API is that it limits file paths' length to 32 bytes, including the terminating \0.
 * The gauges in the web page are derived from this project: canvas-gauges.com . visit the link for documentation.
-* the esp gets readings from the wing controller through I2C from the mega. Full specification of the protocol is provided
+* the esp gets readings from the wing controller through I2C from the mega:
+	-when the ESP sends a frame containing only 'p', the following frame contains kp. same for 'i' and 'd'
+	-when the esp requests data from the mega, the mega has to send wing data followed by vehicle data
 
 AXIS #2) INO MEGA wing controller
 * full circuit schematic attached
